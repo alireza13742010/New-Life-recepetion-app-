@@ -1,0 +1,4 @@
+ Done. Now:
+  1. Open http://localhost:5678 and turn the NewLife workflow OFF and ON.
+  2. Send /start to the bot from @AvidMechanic.
+  3. Your page: https://venue-lubricant-cruelly.ngrok-free.dev/webhook/newlife

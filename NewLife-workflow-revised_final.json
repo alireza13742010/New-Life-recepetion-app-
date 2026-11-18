@@ -1,0 +1,994 @@
+{
+  "name": "NewLife - صفحه ثبت درخواست",
+  "nodes": [
+    {
+      "parameters": {
+        "path": "newlife",
+        "httpMethod": "GET",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "id": "cf3d1de9-b90c-4542-889a-fd80de09bbc3",
+      "name": "Page (GET)",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        0,
+        0
+      ],
+      "webhookId": "1ce88bce-2bd8-4710-a4c1-b8afc83673b3"
+    },
+    {
+      "parameters": {
+        "respondWith": "text",
+        "responseBody": "<!DOCTYPE html>\n<html lang=\"fa\" dir=\"rtl\">\n<head>\n<meta charset=\"utf-8\">\n<meta name=\"viewport\" content=\"width=device-width, initial-scale=1, viewport-fit=cover\">\n<meta name=\"theme-color\" content=\"#cfe8fa\">\n<meta name=\"color-scheme\" content=\"light\">\n<meta name=\"mobile-web-app-capable\" content=\"yes\">\n<meta name=\"apple-mobile-web-app-capable\" content=\"yes\">\n<meta name=\"apple-mobile-web-app-status-bar-style\" content=\"default\">\n<meta name=\"apple-mobile-web-app-title\" content=\"نیو لایف\">\n<title>نیو لایف | ثبت درخواست مشاوره</title>\n<link rel=\"icon\" href=\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%230e2c47'/%3E%3Cpath d='M16 5c1.3 5.2 3.8 7.7 9 9-5.2 1.3-7.7 3.8-9 9-1.3-5.2-3.8-7.7-9-9 5.2-1.3 7.7-3.8 9-9z' fill='%23e9cf98'/%3E%3C/svg%3E\">\n<link rel=\"preconnect\" href=\"https://fonts.googleapis.com\">\n<link rel=\"preconnect\" href=\"https://fonts.gstatic.com\" crossorigin>\n<link href=\"https://fonts.googleapis.com/css2?family=Gilda+Display&family=Vazirmatn:wght@400;600;800&display=swap\" rel=\"stylesheet\">\n<style>\n:root{\n  --sky-top:#cfe8fa; --sky-mid:#dff1fd; --sky-low:#eef8ff;\n  --navy:#0e2c47; --navy-2:#1d4a73; --ink:#0e2c47; --muted:#53708b;\n  --line:#dbeaf5; --line-2:#bed7ea; --field:#f5faff; --tint:#edf6fe;\n  --gold:#c39a55;\n  --err:#b3261e; --warn-bg:#fff4dc; --warn-line:#efd08c; --warn-ink:#6b4500;\n  --ok-bg:#e1f3ea; --ok-ink:#17603f;\n  --t-graft:#0a7287; --t-surg:#4250b5; --t-care:#a8436c;\n  --display:'Gilda Display',Georgia,'Times New Roman',serif;\n  --sans:Vazirmatn,Tahoma,system-ui,sans-serif;\n  --safe-b:env(safe-area-inset-bottom,0px);\n}\n*{box-sizing:border-box}\n[hidden]{display:none!important}\nhtml{-webkit-text-size-adjust:100%;background:var(--sky-top)}\nbody{position:relative;isolation:isolate;margin:0;min-height:100vh;min-height:100dvh;color:var(--ink);font-family:var(--sans);font-size:16px;line-height:1.75;-webkit-tap-highlight-color:transparent}\n/* the sky: fixed so it stays put while the content scrolls (background-attachment:fixed is unreliable on phones) */\nbody::before{content:\"\";position:fixed;inset:0;z-index:-1;background:linear-gradient(180deg,var(--sky-top) 0%,var(--sky-mid) 42%,var(--sky-low) 100%)}\nbutton,input{font:inherit}\n.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}\n.ltr{direction:ltr;text-align:left}\n.ltr::placeholder{text-align:left}\n\n/* ---------- app shell: phone width everywhere, framed like a phone on desktop ---------- */\n.app{display:flex;flex-direction:column;width:min(100%,480px);min-height:100vh;min-height:100dvh;margin-inline:auto}\n\n/* ---------- masthead ---------- */\n.hero{position:relative;isolation:isolate;display:grid;justify-items:center;padding:calc(34px + env(safe-area-inset-top,0px)) 20px 34px;text-align:center;overflow:hidden}\n.hero::before{content:\"\";position:absolute;inset:-30% -40% -10%;z-index:-1;background:\n  radial-gradient(34% 26% at 24% 42%,rgba(255,255,255,.9),transparent 72%),\n  radial-gradient(26% 20% at 80% 30%,rgba(255,255,255,.75),transparent 72%),\n  radial-gradient(42% 26% at 62% 78%,rgba(255,255,255,.6),transparent 72%)}\n.brand{margin:0;padding:.04em .1em .14em;font:400 clamp(60px,18vw,90px)/1 var(--display);letter-spacing:.005em;color:var(--navy);\n  background-image:linear-gradient(105deg,transparent 42%,rgba(255,232,186,.95) 50%,transparent 58%),linear-gradient(180deg,#1a466e 0%,#0e2c47 100%);\n  background-size:260% 100%,100% 100%;background-position:0% 0,0 0;background-repeat:no-repeat;\n  -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;\n  animation:sheen 2.6s cubic-bezier(.45,.1,.25,1) .4s 1 both}\n@keyframes sheen{from{background-position:100% 0,0 0}to{background-position:0% 0,0 0}}\n@supports not ((-webkit-background-clip:text) or (background-clip:text)){.brand{background:none;-webkit-text-fill-color:currentColor}}\n.fa-name{display:flex;align-items:center;gap:8px;margin:2px 0 0;font-size:17px;font-weight:600;color:var(--navy-2)}\n.fa-name svg{color:var(--gold)}\n\n/* ---------- content sheet rising out of the sky ---------- */\n.main{flex:1;padding:24px 18px 0;background:#fff;border-radius:30px 30px 0 0;box-shadow:0 -14px 34px -24px rgba(14,44,71,.4)}\n.sec{margin:0 0 26px}\n.sec-h{margin:0;font-size:18px;font-weight:800;line-height:1.5;color:var(--navy)}\n.sec-p{margin:2px 0 16px;font-size:13.5px;color:var(--muted)}\n\n/* fields */\n.f{display:block;margin:0 0 14px;font-size:14px;font-weight:600;color:var(--navy)}\n.f input,.pform input{display:block;width:100%;height:52px;padding:0 14px;border:1.5px solid var(--line-2);border-radius:14px;font-size:16px;font-weight:400;color:var(--ink);background:var(--field);transition:border-color .15s,box-shadow .15s,background .15s}\n.f input{margin-top:6px}\n.f input:focus,.pform input:focus{outline:none;border-color:var(--navy-2);background:#fff;box-shadow:0 0 0 4px rgba(29,74,115,.14)}\n.f input[aria-invalid=\"true\"],.pform input[aria-invalid=\"true\"]{border-color:var(--err);box-shadow:0 0 0 4px rgba(179,38,30,.1)}\n.row2{display:grid;grid-template-columns:1fr 1fr;gap:10px}\n.row-ae{display:grid;grid-template-columns:92px 1fr;gap:10px}\n.opt{font-weight:400;font-size:12.5px;color:var(--muted)}\n.req{color:var(--err);font-weight:800;margin-inline-start:2px}\n.note{margin:-8px 0 14px;font-size:12.5px;line-height:1.7;color:var(--muted)}\n.hp{position:absolute;inset-inline-start:-9999px;width:1px;height:1px;overflow:hidden}\n\n/* service categories: three tabs, one colour each */\n.tabs{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:0 0 12px}\n.tab{position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;min-height:86px;padding:12px 6px 10px;border:1.5px solid var(--line-2);border-radius:18px;background:var(--field);font-size:13px;font-weight:600;line-height:1.35;color:var(--navy);text-align:center;cursor:pointer;touch-action:manipulation;transition:background .15s,border-color .15s,color .15s}\n.tab svg{width:28px;height:28px;color:var(--tone)}\n.tab[aria-selected=\"true\"]{background:var(--tone);border-color:var(--tone);color:#fff}\n.tab[aria-selected=\"true\"] svg{color:#fff}\n.tab:focus-visible{outline:3px solid var(--gold);outline-offset:2px}\n.badge{position:absolute;top:7px;inset-inline-end:7px;min-width:22px;height:22px;padding:0 6px;border-radius:11px;background:var(--tone);color:#fff;font-size:12px;font-weight:800;line-height:22px}\n.tab[aria-selected=\"true\"] .badge{background:#fff;color:var(--tone)}\n.pane{border:1.5px solid color-mix(in srgb,var(--tone) 30%,#fff);border-radius:18px;overflow:hidden}\n.pane-h{display:flex;align-items:baseline;justify-content:space-between;gap:10px;padding:12px 16px;background:color-mix(in srgb,var(--tone) 9%,#fff)}\n.pane-h h3{margin:0;font-size:15px;font-weight:800;color:var(--tone)}\n.pane-h small{flex:none;font-size:12.5px;color:var(--muted)}\n.opt-row{position:relative;display:flex;align-items:center;gap:12px;min-height:56px;padding:10px 16px;border-top:1px solid var(--line);cursor:pointer;touch-action:manipulation}\n.opt-row input{position:absolute;inset:0;width:100%;height:100%;margin:0;opacity:0;cursor:pointer}\n.box{flex:none;display:grid;place-items:center;width:24px;height:24px;border:2px solid var(--line-2);border-radius:8px;background:#fff;transition:background .12s,border-color .12s}\n.box svg{width:14px;height:14px;color:#fff;opacity:0}\n.opt-t{font-size:15px;line-height:1.6}\n.opt-row:has(input:checked){background:color-mix(in srgb,var(--tone) 6%,#fff)}\n.opt-row input:checked~.box{background:var(--tone);border-color:var(--tone)}\n.opt-row input:checked~.box svg{opacity:1}\n.opt-row input:checked~.opt-t{font-weight:600;color:var(--tone)}\n.opt-row input:focus-visible~.box{outline:3px solid var(--gold);outline-offset:2px}\n.picked{margin:14px 0 0}\n.picked h3{margin:0 0 8px;font-size:13.5px;font-weight:600;color:var(--muted)}\n.pchips{display:flex;flex-wrap:wrap;gap:6px}\n.pchip{display:inline-flex;align-items:center;gap:2px;min-height:36px;padding-inline:12px 4px;border-radius:999px;background:color-mix(in srgb,var(--tone) 11%,#fff);color:var(--tone);font-size:13px;font-weight:600}\n.pchip button{display:grid;place-items:center;width:30px;height:30px;padding:0;border:0;border-radius:50%;background:none;color:inherit;cursor:pointer}\n.pchip button:focus-visible{outline:2px solid var(--gold)}\n.pchip svg{width:14px;height:14px}\n\n/* bottom action bar: always within thumb reach */\n.actionbar{position:sticky;bottom:0;z-index:5;margin:0 -18px;padding:10px 18px calc(12px + var(--safe-b));background:rgba(255,255,255,.94);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);border-top:1px solid var(--line)}\n.sum{margin:0 0 6px;font-size:13px;color:var(--muted);text-align:center}\n.err{margin:0 0 8px;font-size:13.5px;line-height:1.7;color:var(--err)}\n.err:empty{display:none}\n.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:54px;padding:0 24px;border:0;border-radius:16px;font-size:16px;font-weight:800;text-decoration:none;cursor:pointer;touch-action:manipulation;transition:background .15s,transform .1s}\n.btn:active:not([disabled]){transform:scale(.985)}\n.btn:focus-visible{outline:3px solid var(--gold);outline-offset:3px}\n.btn[disabled]{opacity:.6;cursor:progress}\n.btn.primary{width:100%;background:var(--navy);color:#fff;box-shadow:0 12px 22px -14px rgba(14,44,71,.9)}\n.btn.primary:hover:not([disabled]){background:var(--navy-2)}\n.btn.plain{width:100%;min-height:48px;background:none;color:var(--navy-2);font-weight:600}\n.link{padding:10px 0;border:0;background:none;font-size:14.5px;font-weight:600;color:var(--navy-2);text-decoration:underline;text-underline-offset:5px;cursor:pointer}\n.link:focus-visible{outline:3px solid var(--gold);outline-offset:3px;border-radius:4px}\n\n/* ---------- request status screen ---------- */\n.reqv{animation:rise .28s ease-out both}\n@keyframes rise{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}\n.state{display:grid;place-items:center;width:56px;height:56px;margin:4px auto 12px;border-radius:50%;background:var(--tint);color:var(--navy)}\n.state svg{width:28px;height:28px}\n.dots{display:flex;gap:6px}\n.dots i{width:8px;height:8px;border-radius:50%;background:var(--navy);animation:blink 1.2s infinite}\n.dots i:nth-child(2){animation-delay:.2s}.dots i:nth-child(3){animation-delay:.4s}\n@keyframes blink{0%,100%{opacity:.2}40%{opacity:1}}\n.reqv[data-state=\"answered\"] .state,.reqv[data-state=\"closed\"] .state{background:var(--ok-bg);color:var(--ok-ink)}\n.reqv h2{margin:0 0 4px;font-size:21px;font-weight:800;line-height:1.6;text-align:center}\n.reqv h2:focus{outline:none}\n.lead{margin:0 auto 18px;max-width:34em;font-size:14.5px;color:var(--muted);text-align:center}\n.steps{display:grid;grid-template-columns:repeat(4,1fr);margin:0 0 20px;padding:0;list-style:none;counter-reset:st}\n.steps li{position:relative;display:flex;flex-direction:column;align-items:center;gap:6px;font-size:12px;line-height:1.4;color:var(--muted);text-align:center}\n.steps li::before{counter-increment:st;content:counter(st,persian);position:relative;z-index:1;display:grid;place-items:center;width:30px;height:30px;border:2px solid var(--line-2);border-radius:50%;background:#fff;font-size:13px;font-weight:800;color:var(--muted)}\n.steps li::after{content:\"\";position:absolute;top:14px;right:50%;width:100%;height:2px;background:var(--line-2)}\n.steps li:last-child::after{display:none}\n.steps li.done::before{content:\"✓\";border-color:var(--navy);background:var(--navy);color:#fff}\n.steps li.done::after{background:var(--navy)}\n.steps li.cur{font-weight:800;color:var(--navy)}\n.steps li.cur::before{border-color:var(--navy);color:var(--navy);box-shadow:0 0 0 5px rgba(14,44,71,.1)}\n.meter{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:0 0 10px}\n.meter>div{display:flex;flex-direction:column;justify-content:center;padding:10px 12px;border-radius:16px;background:var(--tint)}\n.meter .elapsed{grid-column:1/-1;align-items:center;padding:12px}\n.meter dt{font-size:12px;color:var(--muted)}\n.meter dd{margin:0;font-size:14.5px;font-weight:800;line-height:1.6}\n.meter .elapsed dd{direction:ltr;font-size:48px;font-weight:600;line-height:1.25;color:var(--navy);font-variant-numeric:tabular-nums}\n.bar{height:4px;margin:0 0 16px;border-radius:2px;background:var(--line);overflow:hidden}\n.bar b{display:block;width:0;height:100%;background:var(--navy);transition:width 1s linear}\n.late{margin:0 0 16px;padding:12px 14px;border-radius:14px;background:var(--warn-bg);color:var(--warn-ink);font-size:14px}\n.late a,.more a{color:inherit;font-weight:800}\n.codeline{margin:0 0 16px;font-size:13.5px;color:var(--muted);text-align:center}\n.codeline b{color:var(--navy)}\n.pcard{margin:0 0 18px;padding:16px;border:1.5px solid var(--line-2);border-radius:18px;background:var(--tint)}\n.pcard.asked{border-color:var(--warn-line);background:var(--warn-bg)}\n.pcard.saved{border-color:#bfe3cf;background:var(--ok-bg);color:var(--ok-ink)}\n.pcard h3{margin:0 0 2px;font-size:15.5px;font-weight:800}\n.pcard p{margin:0 0 12px;font-size:13.5px;line-height:1.75;color:var(--muted)}\n.pcard.asked p{color:var(--warn-ink)}\n.pcard.saved p{margin:0;color:var(--ok-ink)}\n.pform{display:grid;grid-template-columns:1fr auto;gap:8px}\n.pform .btn{width:auto;padding:0 18px}\n.pcard .err{margin:8px 0 0}\n.thread{margin:0 0 18px}\n.took{display:block;width:max-content;max-width:100%;margin:0 auto 14px;padding:5px 14px;border-radius:999px;background:var(--ok-bg);color:var(--ok-ink);font-size:13.5px;font-weight:600}\n.msgs{display:grid;gap:10px}\n.msg{max-width:92%;justify-self:start;padding:10px 14px 8px;border:1px solid #d2e5f5;border-radius:20px;border-start-start-radius:6px;background:var(--tint)}\n.msg.ask{border-color:var(--warn-line);background:var(--warn-bg)}\n.msg .who{display:block;font-size:12px;font-weight:800;color:var(--navy-2)}\n.msg p{margin:0;white-space:pre-wrap;overflow-wrap:anywhere}\n.msg time{display:block;font-size:11.5px;color:var(--muted);text-align:end}\n.more{margin:0 0 4px;font-size:14px;color:var(--muted);text-align:center}\n.again{display:flex;justify-content:center;margin:0 0 22px}\n\n/* ---------- address, map links, phone ---------- */\n.visit{margin:6px 0 calc(18px + var(--safe-b));padding:24px 18px 26px;border-radius:24px;background:var(--tint);text-align:center}\n.visit .pin{display:block;margin:0 auto 8px;color:var(--navy-2)}\n.visit h2{margin:0 0 4px;font-size:14px;font-weight:600;color:var(--muted)}\n.visit address{margin:0 0 18px;font-style:normal;font-size:16.5px;line-height:1.9;color:var(--navy);text-wrap:balance}\n.visit address strong{font-weight:800}\n.acts{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:0 0 22px}\n.acts .btn{min-height:50px;padding:0 12px;font-size:14.5px}\n.btn.navy{background:var(--navy);color:#fff}\n.btn.ghost{background:#fff;color:var(--navy);box-shadow:inset 0 0 0 1.5px var(--line-2)}\n.call{padding-top:18px;border-top:1px solid var(--line-2)}\n.tel{display:inline-block;font-size:30px;font-weight:600;line-height:1.4;letter-spacing:.02em;color:var(--navy);text-decoration:none;direction:ltr;unicode-bidi:isolate}\n.tel:focus-visible{outline:3px solid var(--gold);outline-offset:4px;border-radius:4px}\n\n/* ---------- missing-phone warning: a bottom sheet ---------- */\ndialog.sheet{position:fixed;top:auto;bottom:0;left:0;right:0;width:min(100%,480px);max-width:100%;max-height:92dvh;margin:0 auto;padding:0;border:0;border-radius:28px 28px 0 0;background:#fff;color:var(--ink);box-shadow:0 -20px 50px -20px rgba(14,44,71,.45);overflow:auto}\ndialog.sheet::backdrop{background:rgba(14,44,71,.45)}\ndialog.sheet[open]{animation:up .28s cubic-bezier(.2,.8,.2,1)}\n@keyframes up{from{transform:translateY(100%)}to{transform:none}}\n.sheet-in{padding:10px 20px calc(16px + var(--safe-b))}\n.grab{display:block;width:44px;height:5px;margin:0 auto 16px;border-radius:3px;background:var(--line-2)}\n.sheet-ico{display:grid;place-items:center;width:54px;height:54px;margin:0 0 12px;border-radius:18px;background:var(--warn-bg);color:var(--warn-ink)}\n.sheet h2{margin:0 0 4px;font-size:19px;font-weight:800;line-height:1.6}\n.sheet h2:focus{outline:none}\n.sheet p{margin:0 0 16px;font-size:14.5px;color:var(--muted)}\n.sheet .err{margin:-6px 0 10px}\n.sheet .btn.primary{margin-top:2px}\n\n@media (min-width:600px){\n  body{padding:24px 0}\n  .app{min-height:calc(100dvh - 48px);border-radius:34px;background:rgba(255,255,255,.22);box-shadow:0 40px 70px -40px rgba(14,44,71,.45),inset 0 0 0 1px rgba(255,255,255,.75);overflow:clip}\n  .actionbar{border-radius:0}\n}\n@media (max-width:350px){.tab{font-size:12px;min-height:80px}.row-ae{grid-template-columns:1fr}.acts{grid-template-columns:1fr}}\n@media (prefers-reduced-motion:reduce){.brand,.reqv,.dots i,dialog.sheet[open]{animation:none}.dots i{opacity:.6}.bar b{transition:none}}\n</style>\n</head>\n<body>\n<div class=\"app\">\n\n<header class=\"hero\">\n  <h1 class=\"brand\" lang=\"en\" dir=\"ltr\" aria-label=\"New Life، نیو لایف\">New Life</h1>\n  <p class=\"fa-name\" aria-hidden=\"true\"><svg viewBox=\"0 0 32 32\" width=\"13\" height=\"13\"><path d=\"M16 3c1.5 6 4.5 9 13 13-8.5 1.5-11.5 4.5-13 13-1.5-8.5-4.5-11.5-13-13 8.5-4 11.5-7 13-13z\" fill=\"currentColor\"/></svg>نیو لایف<svg viewBox=\"0 0 32 32\" width=\"13\" height=\"13\"><path d=\"M16 3c1.5 6 4.5 9 13 13-8.5 1.5-11.5 4.5-13 13-1.5-8.5-4.5-11.5-13-13 8.5-4 11.5-7 13-13z\" fill=\"currentColor\"/></svg></p>\n</header>\n\n<main class=\"main\" id=\"main\">\n\n  <form id=\"p-form\" novalidate>\n    <section class=\"sec\" aria-labelledby=\"h-you\">\n      <h2 class=\"sec-h\" id=\"h-you\">درخواست مشاوره</h2>\n      <p class=\"sec-p\">فرم را پر کنید؛ پاسخ همکاران ما همین‌جا در همین صفحه نمایش داده می‌شود.</p>\n      <div class=\"row2\">\n        <label class=\"f\">نام <span class=\"req\" aria-hidden=\"true\">*</span><input type=\"text\" name=\"firstName\" id=\"firstName\" autocomplete=\"given-name\" enterkeyhint=\"next\" required aria-required=\"true\"></label>\n        <label class=\"f\">نام خانوادگی<input type=\"text\" name=\"lastName\" autocomplete=\"family-name\" enterkeyhint=\"next\"></label>\n      </div>\n      <label class=\"f\">شماره موبایل<input class=\"ltr\" type=\"tel\" name=\"phone\" id=\"phone\" autocomplete=\"tel\" inputmode=\"tel\" enterkeyhint=\"next\" placeholder=\"09123456789\" aria-describedby=\"phone-note\"></label>\n      <p class=\"note\" id=\"phone-note\">همکاران ما برای هماهنگی مشاوره با این شماره تماس می‌گیرند.</p>\n      <div class=\"row-ae\">\n        <label class=\"f\">سن <span class=\"opt\">(اختیاری)</span><input type=\"text\" name=\"age\" inputmode=\"numeric\" maxlength=\"3\" autocomplete=\"off\" enterkeyhint=\"next\"></label>\n        <label class=\"f\">جیمیل <span class=\"opt\">(اختیاری)</span><input class=\"ltr\" type=\"email\" name=\"email\" id=\"email\" list=\"sg\" autocomplete=\"email\" enterkeyhint=\"done\" placeholder=\"example@gmail.com\"></label>\n      </div>\n      <datalist id=\"sg\"></datalist>\n    </section>\n\n    <section class=\"sec\" id=\"svc\" aria-labelledby=\"h-svc\">\n      <h2 class=\"sec-h\" id=\"h-svc\">خدمات مورد نظر <span class=\"req\" aria-hidden=\"true\">*</span></h2>\n      <p class=\"sec-p\">یک دسته را باز کنید و خدمت دلخواه را بزنید. از هر سه دسته می‌توانید چند مورد انتخاب کنید.</p>\n      <div class=\"tabs\" id=\"tabs\" role=\"tablist\" aria-label=\"دسته‌های خدمات\"></div>\n      <div id=\"panes\"></div>\n      <div class=\"picked\" id=\"picked\" hidden>\n        <h3>انتخاب‌های شما</h3>\n        <div class=\"pchips\" id=\"pchips\"></div>\n      </div>\n    </section>\n\n    <div class=\"hp\" aria-hidden=\"true\"><label>Website<input type=\"text\" name=\"website\" tabindex=\"-1\" autocomplete=\"off\"></label></div>\n\n    <div class=\"actionbar\">\n      <p class=\"err\" id=\"err\" role=\"alert\"></p>\n      <p class=\"sum\" id=\"sum\" aria-live=\"polite\">هنوز خدمتی انتخاب نشده</p>\n      <button class=\"btn primary\" type=\"submit\" id=\"send\">ثبت درخواست</button>\n    </div>\n  </form>\n\n  <section class=\"reqv\" id=\"p-req\" hidden aria-live=\"polite\">\n    <div class=\"state\" aria-hidden=\"true\">\n      <span class=\"dots\" id=\"dots\"><i></i><i></i><i></i></span>\n      <svg id=\"okmark\" viewBox=\"0 0 24 24\" hidden><path d=\"M5 12.5l4.5 4.5L19 7.5\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/></svg>\n    </div>\n    <h2 id=\"req-title\" tabindex=\"-1\">درخواست شما ثبت شد</h2>\n    <p class=\"lead\" id=\"req-lead\"></p>\n\n    <ol class=\"steps\" id=\"steps\" aria-label=\"مراحل درخواست\">\n      <li>ثبت شد</li>\n      <li>در صف بررسی</li>\n      <li>پاسخ داده شد</li>\n      <li>تکمیل شد</li>\n    </ol>\n\n    <div id=\"waitbox\">\n      <dl class=\"meter\">\n        <div class=\"elapsed\"><dt>زمان انتظار</dt><dd id=\"elapsed\">—</dd></div>\n        <div><dt>جایگاه در صف</dt><dd id=\"queue\">—</dd></div>\n        <div><dt>پاسخ معمولاً تا</dt><dd id=\"eta\"></dd></div>\n        <div><dt>کد پیگیری</dt><dd id=\"code\" dir=\"ltr\"></dd></div>\n      </dl>\n      <div class=\"bar\" aria-hidden=\"true\"><b id=\"fill\"></b></div>\n      <p class=\"late\" id=\"late\" hidden>پاسخ‌دهی کمی طول کشیده است. برای ارتباط سریع‌تر با <a href=\"tel:09981269624\" dir=\"ltr\">0998 126 9624</a> تماس بگیرید.</p>\n    </div>\n\n    <div class=\"pcard\" id=\"pcard\" hidden>\n      <div id=\"pc-ask\">\n        <h3 id=\"pc-h\">شماره موبایل خود را اضافه کنید</h3>\n        <p id=\"pc-p\"></p>\n        <form class=\"pform\" id=\"pform\" novalidate>\n          <label class=\"sr\" for=\"pin\">شماره موبایل</label>\n          <input class=\"ltr\" type=\"tel\" id=\"pin\" autocomplete=\"tel\" inputmode=\"tel\" enterkeyhint=\"send\" placeholder=\"09123456789\">\n          <button class=\"btn primary\" type=\"submit\" id=\"pbtn\">ثبت شماره</button>\n        </form>\n        <p class=\"err\" id=\"perr\" role=\"alert\"></p>\n      </div>\n      <div id=\"pc-ok\" hidden>\n        <h3>شماره موبایل ثبت شد</h3>\n        <p id=\"pc-okp\"></p>\n      </div>\n    </div>\n\n    <div class=\"thread\" id=\"thread\" hidden>\n      <p class=\"took\">زمان پاسخ‌گویی: <span id=\"took\"></span></p>\n      <div class=\"msgs\" id=\"msgs\"></div>\n    </div>\n\n    <p class=\"codeline\" id=\"codeline\" hidden>کد پیگیری: <b dir=\"ltr\" id=\"code2\"></b></p>\n    <p class=\"more\">سؤال دیگری دارید؟ با <a href=\"tel:09981269624\" dir=\"ltr\">0998 126 9624</a> تماس بگیرید.</p>\n    <div class=\"again\"><button type=\"button\" class=\"link\" data-again>ثبت درخواست جدید</button></div>\n  </section>\n\n  <section class=\"visit\" aria-labelledby=\"visit-h\">\n    <svg class=\"pin\" viewBox=\"0 0 24 24\" width=\"28\" height=\"28\" aria-hidden=\"true\" focusable=\"false\"><path d=\"M12 22s7-6.1 7-12a7 7 0 1 0-14 0c0 5.9 7 12 7 12Z\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linejoin=\"round\"/><circle cx=\"12\" cy=\"10\" r=\"2.6\" fill=\"currentColor\"/></svg>\n    <h2 id=\"visit-h\">آدرس کلینیک</h2>\n    <address><strong>شهرک غرب، خیابان ایران زمین، خیابان مهستان، کوچه چهارم، پلاک 5 کلینیک نیولایف</strong></address>\n    <div class=\"acts\">\n      <a class=\"btn navy\" href=\"https://www.google.com/maps/search/?api=1&amp;query=%DA%A9%D9%84%DB%8C%D9%86%DB%8C%DA%A9%20%D9%86%DB%8C%D9%88%D9%84%D8%A7%DB%8C%D9%81%D8%8C%20%D8%B4%D9%87%D8%B1%DA%A9%20%D8%BA%D8%B1%D8%A8%D8%8C%20%D8%AE%DB%8C%D8%A7%D8%A8%D8%A7%D9%86%20%D8%A7%DB%8C%D8%B1%D8%A7%D9%86%20%D8%B2%D9%85%DB%8C%D9%86%D8%8C%20%D8%AE%DB%8C%D8%A7%D8%A8%D8%A7%D9%86%20%D9%85%D9%87%D8%B3%D8%AA%D8%A7%D9%86%D8%8C%20%D8%AA%D9%87%D8%B1%D8%A7%D9%86\" target=\"_blank\" rel=\"noopener\">Google Maps</a>\n      <a class=\"btn ghost\" href=\"https://www.google.com/maps/dir/?api=1&amp;destination=%DA%A9%D9%84%DB%8C%D9%86%DB%8C%DA%A9%20%D9%86%DB%8C%D9%88%D9%84%D8%A7%DB%8C%D9%81%D8%8C%20%D8%B4%D9%87%D8%B1%DA%A9%20%D8%BA%D8%B1%D8%A8%D8%8C%20%D8%AE%DB%8C%D8%A7%D8%A8%D8%A7%D9%86%20%D8%A7%DB%8C%D8%B1%D8%A7%D9%86%20%D8%B2%D9%85%DB%8C%D9%86%D8%8C%20%D8%AE%DB%8C%D8%A7%D8%A8%D8%A7%D9%86%20%D9%85%D9%87%D8%B3%D8%AA%D8%A7%D9%86%D8%8C%20%D8%AA%D9%87%D8%B1%D8%A7%D9%86\" target=\"_blank\" rel=\"noopener\">مسیریابی</a>\n    </div>\n    <div class=\"call\">\n      <h2>تماس با پشتیبانی</h2>\n      <a class=\"tel\" href=\"tel:09981269624\">0998 126 9624</a>\n    </div>\n  </section>\n\n</main>\n</div>\n\n<dialog class=\"sheet\" id=\"sheet\" aria-labelledby=\"sheet-h\">\n  <form class=\"sheet-in\" id=\"sheet-form\" novalidate>\n    <span class=\"grab\" aria-hidden=\"true\"></span>\n    <div class=\"sheet-ico\" aria-hidden=\"true\"><svg viewBox=\"0 0 24 24\" width=\"28\" height=\"28\"><rect x=\"6.5\" y=\"2.5\" width=\"11\" height=\"19\" rx=\"2.5\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.7\"/><path d=\"M10.5 18.5h3\" stroke=\"currentColor\" stroke-width=\"1.7\" stroke-linecap=\"round\"/></svg></div>\n    <h2 id=\"sheet-h\" tabindex=\"-1\" autofocus>شماره موبایل را وارد نکرده‌اید</h2>\n    <p>بدون شماره موبایل، همکاران ما نمی‌توانند برای مشاوره و تعیین وقت با شما تماس بگیرند. لطفاً شماره خود را وارد کنید.</p>\n    <label class=\"f\">شماره موبایل<input class=\"ltr\" type=\"tel\" id=\"sheet-phone\" autocomplete=\"tel\" inputmode=\"tel\" enterkeyhint=\"send\" placeholder=\"09123456789\"></label>\n    <p class=\"err\" id=\"sheet-err\" role=\"alert\"></p>\n    <button class=\"btn primary\" type=\"submit\">ثبت شماره و ارسال درخواست</button>\n    <button class=\"btn plain\" type=\"button\" id=\"sheet-skip\">ارسال بدون شماره</button>\n  </form>\n</dialog>\n\n<noscript><p style=\"margin:0;padding:16px;background:#fff4dc;text-align:center\">برای ثبت درخواست، جاوااسکریپت مرورگر را فعال کنید یا با 0998 126 9624 تماس بگیرید.</p></noscript>\n\n<script>\n(() => {\n'use strict';\n\n/* ===== Edit here ===== */\nconst EXPECTED_MIN = 15;                 // typical reply time shown to the visitor, in minutes\nconst PHONE = '0998 126 9624';\nconst SERVICES = [                       // three categories; each one becomes a tab with its own colour\n  { name: 'کاشت مو، ابرو و ریش', short: 'کاشت مو و ابرو', tone: 'graft', icon: 'graft', items: [\n    'میکروکاشت موی سر',\n    'میکروکاشت ابرو',\n    'میکروکاشت ریش'\n  ] },\n  { name: 'جراحی‌های زیبایی', short: 'جراحی زیبایی', tone: 'surg', icon: 'surg', items: [\n    'بلفاروپلاستی (پف پلک)',\n    'دایرکت ابرو (لیفت دم ابرو) و لیفت شقیقه',\n    'عمل غبغب',\n    'جراحی بینی',\n    'سانترال لب',\n    'اتوپلاستی گوش',\n    'پروتز و لیفت سینه و ماموپلاستی',\n    'ژنیکوماستی (جراحی سینه آقایان)',\n    'ابدومینوپلاستی'\n  ] },\n  { name: 'زیبایی بدون جراحی', short: 'بدون جراحی', tone: 'care', icon: 'care', items: [\n    'تزریق چربی و فیلر صورت و بدن',\n    'لیفت نخ',\n    'هایفوتراپی و تزریق جوانساز'\n  ] }\n];\n/* ===================== */\n\nconst SVG = p => '<svg viewBox=\"0 0 24 24\" aria-hidden=\"true\" focusable=\"false\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.7\" stroke-linecap=\"round\" stroke-linejoin=\"round\">' + p + '</svg>';\nconst ICONS = {\n  graft: SVG('<path d=\"M7.5 20.5c0-4.5 1.6-6.5 1.6-10.5S7.5 4 7.5 4\"/><path d=\"M12 20.5c0-4.5 1.6-6.5 1.6-10.5S12 4 12 4\"/><path d=\"M16.5 20.5c0-4.5 1.6-6.5 1.6-10.5S16.5 4 16.5 4\"/><path d=\"M4.5 20.5h15\"/>'),\n  surg: SVG('<path d=\"M3.5 20.5l7.2-7.2\"/><path d=\"M10.7 13.3 18.6 5.4a2 2 0 0 1 2.9 2.8l-6.6 7.4c-.9 1-2.4 1.1-3.4.2z\"/>'),\n  care: SVG('<path d=\"m17.5 3.5 3 3\"/><path d=\"m19 5-3 3\"/><path d=\"M15 5.5 19 9.5\"/><path d=\"M17 7.5 8.4 16.1a2 2 0 0 1-2.8 0l-.2-.2a2 2 0 0 1 0-2.8L14 4.5\"/><path d=\"m8.5 10 2 2\"/><path d=\"m11 7.5 2 2\"/><path d=\"m5.5 18.5-2 2\"/>')\n};\nconst CHECK = '<svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M5 12.5l4.5 4.5L19 7.5\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"3\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/></svg>';\nconst XICON = '<svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M6 6l12 12M18 6 6 18\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2.4\" stroke-linecap=\"round\"/></svg>';\n\nconst $ = (s, r = document) => r.querySelector(s);\nconst $$ = (s, r = document) => [...r.querySelectorAll(s)];\nconst el = (t, c, txt) => { const e = document.createElement(t); if (c) e.className = c; if (txt != null) e.textContent = txt; return e; };\nconst nf = new Intl.NumberFormat('fa-IR');\nconst LRI = '⁦', PDI = '⁩';\nconst dig = s => String(s).replace(/[۰-۹]/g, d => '۰۱۲۳۴۵۶۷۸۹'.indexOf(d)).replace(/[٠-٩]/g, d => '٠١٢٣٤٥٦٧٨٩'.indexOf(d));\nconst normPhone = p => {\n  p = dig(p).replace(/[\\s\\-().]/g, '');\n  if (/^\\+98/.test(p)) p = '0' + p.slice(3); else if (/^0098/.test(p)) p = '0' + p.slice(4); else if (/^9\\d{9}$/.test(p)) p = '0' + p;\n  return p;\n};\nconst PHONE_RE = /^09\\d{9}$/;\nconst two = n => nf.format(Math.floor(n / 10)) + nf.format(n % 10);\nconst clock = s => { s = Math.floor(s); const h = Math.floor(s / 3600), m = Math.floor((s % 3600) / 60), x = s % 60; return (h ? nf.format(h) + ':' + two(m) : two(m)) + ':' + two(x); };\nconst hhmm = t => new Date(t).toLocaleTimeString('fa-IR', { hour: '2-digit', minute: '2-digit' });\nconst dur = s => {\n  s = Math.max(0, Math.round(s));\n  const h = Math.floor(s / 3600), m = Math.floor((s % 3600) / 60), x = s % 60, p = [];\n  if (h) p.push(nf.format(h) + ' ساعت');\n  if (m) p.push(nf.format(m) + ' دقیقه');\n  if (!h && (x || !m)) p.push(nf.format(x) + ' ثانیه');\n  return p.join(' و ');\n};\nconst store = {\n  get: k => { try { return localStorage.getItem(k) || ''; } catch (e) { return ''; } },\n  set: (k, v) => { try { localStorage.setItem(k, v); } catch (e) {} },\n  del: k => { try { localStorage.removeItem(k); } catch (e) {} }\n};\n\nconst url = name => location.pathname.replace(/newlife\\/?$/, name);\nconst NGROK = { 'ngrok-skip-browser-warning': '1' };   // free ngrok: stops its warning page from answering the form's requests\nconst SUBMIT_URL = url('newlife-submit'), STATUS_URL = url('newlife-status'), PHONE_URL = url('newlife-phone');\nconst form = $('#p-form'), errEl = $('#err'), sendBtn = $('#send'), em = $('#email'), phoneIn = $('#phone');\nconst tabsEl = $('#tabs'), panesEl = $('#panes'), pickedEl = $('#picked'), pchips = $('#pchips'), sumEl = $('#sum');\nconst reqEl = $('#p-req');\nconst reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;\n$('#eta').textContent = 'حدود ' + nf.format(EXPECTED_MIN) + ' دقیقه';\n\n/* ---- services: three category tabs ---- */\nconst tabs = [], panes = [];\nSERVICES.forEach((c, ci) => {\n  const tone = 'var(--t-' + c.tone + ')';\n  const tab = el('button', 'tab'), badge = el('b', 'badge'), sr = el('span', 'sr');\n  tab.type = 'button'; tab.id = 'tab' + ci; tab.tabIndex = ci ? -1 : 0;\n  tab.setAttribute('role', 'tab'); tab.setAttribute('aria-controls', 'pane' + ci); tab.setAttribute('aria-selected', String(!ci));\n  tab.style.setProperty('--tone', tone);\n  tab.insertAdjacentHTML('afterbegin', ICONS[c.icon] || '');\n  badge.hidden = true; badge.setAttribute('aria-hidden', 'true');\n  tab.append(el('span', null, c.short), badge, sr);\n  tab.addEventListener('click', () => selectTab(ci));\n  tabsEl.appendChild(tab);\n\n  const pane = el('div', 'pane'), head = el('div', 'pane-h');\n  pane.id = 'pane' + ci; pane.hidden = !!ci;\n  pane.setAttribute('role', 'tabpanel'); pane.setAttribute('aria-labelledby', 'tab' + ci);\n  pane.style.setProperty('--tone', tone);\n  head.append(el('h3', null, c.name), el('small', null, nf.format(c.items.length) + ' خدمت'));\n  pane.appendChild(head);\n  c.items.forEach(it => {\n    const row = el('label', 'opt-row'), i = el('input'), box = el('span', 'box');\n    i.type = 'checkbox'; i.name = 'svc'; i.value = it; i.dataset.ci = ci;\n    box.innerHTML = CHECK;\n    row.append(i, box, el('bdi', 'opt-t', it));\n    pane.appendChild(row);\n  });\n  panesEl.appendChild(pane);\n  tabs.push({ tab, badge, sr }); panes.push(pane);\n});\nfunction selectTab(ci, focus) {\n  tabs.forEach((t, k) => { const on = k === ci; t.tab.setAttribute('aria-selected', String(on)); t.tab.tabIndex = on ? 0 : -1; panes[k].hidden = !on; });\n  if (focus) tabs[ci].tab.focus();\n}\ntabsEl.addEventListener('keydown', e => {\n  const cur = tabs.findIndex(t => t.tab === document.activeElement), n = tabs.length;\n  if (cur < 0) return;\n  const k = e.key === 'ArrowLeft' ? (cur + 1) % n : e.key === 'ArrowRight' ? (cur - 1 + n) % n : e.key === 'Home' ? 0 : e.key === 'End' ? n - 1 : null;\n  if (k !== null) { e.preventDefault(); selectTab(k, true); }\n});\nconst checked = () => $$('input[name=\"svc\"]:checked', panesEl);\nfunction refresh() {\n  const on = checked();\n  tabs.forEach((t, ci) => {\n    const n = on.filter(i => +i.dataset.ci === ci).length;\n    t.badge.hidden = !n; t.badge.textContent = nf.format(n);\n    t.sr.textContent = n ? '، ' + nf.format(n) + ' مورد انتخاب شده' : '';\n  });\n  pchips.replaceChildren(...on.map(i => {\n    const chip = el('span', 'pchip'), x = el('button');\n    chip.style.setProperty('--tone', 'var(--t-' + SERVICES[i.dataset.ci].tone + ')');\n    x.type = 'button'; x.setAttribute('aria-label', 'حذف ' + i.value); x.innerHTML = XICON;\n    x.addEventListener('click', () => { i.checked = false; refresh(); });\n    chip.append(el('bdi', null, i.value), x);\n    return chip;\n  }));\n  pickedEl.hidden = !on.length;\n  sumEl.textContent = on.length ? nf.format(on.length) + ' خدمت انتخاب شده' : 'هنوز خدمتی انتخاب نشده';\n}\npanesEl.addEventListener('change', () => { errEl.textContent = ''; refresh(); });\nconst collect = () => SERVICES.map((c, ci) => ({\n  category: c.name,\n  items: checked().filter(i => +i.dataset.ci === ci).map(i => i.value)\n})).filter(s => s.items.length);\n\n/* ---- remember the request so a reload or a return visit keeps showing it ---- */\nconst save = l => {\n  store.set('nl_lead', JSON.stringify({ token: l.token, id: l.id }));\n  try { history.replaceState(null, '', '#r=' + l.token + '.' + l.id); } catch (e) {}\n};\nconst load = () => {\n  const m = /^#r=([a-z0-9]{16,64})\\.([A-Z0-9-]{4,12})$/.exec(location.hash);\n  if (m) return { token: m[1], id: m[2] };\n  try { const v = JSON.parse(store.get('nl_lead') || 'null'); if (v && v.token) return v; } catch (e) {}\n  return null;\n};\nconst forget = () => {\n  store.del('nl_lead');\n  try { history.replaceState(null, '', location.pathname + location.search); } catch (e) {}\n};\n\n/* ---- request status screen ---- */\nconst TEXT = {\n  waiting: ['درخواست شما ثبت شد', 'همکاران ما در حال بررسی هستند و پاسخ همین‌جا نمایش داده می‌شود. این صفحه را باز نگه دارید؛ اگر بستید، بعداً با همین گوشی به همین صفحه برگردید.'],\n  answered: ['همکاران نیو لایف پاسخ دادند', 'پاسخ‌ها را در پایین ببینید. پیام‌های تازه هم همین‌جا اضافه می‌شوند.'],\n  closed: ['درخواست شما تکمیل شد', 'همکاران نیو لایف این درخواست را تکمیل کردند. اگر سؤال دیگری دارید، درخواست تازه‌ای ثبت کنید یا تماس بگیرید.']\n};\nlet lead = null, replies = [], repKey = '', state = '', offset = 0, tickT = null, pollT = null, primed = false, phoneSaved = '', unread = 0;\nconst baseTitle = document.title;\n\nfunction view(k, o = {}) {\n  form.hidden = k !== 'form'; reqEl.hidden = k !== 'req';\n  if (o.focus && k === 'req') $('#req-title').focus({ preventScroll: true });\n  if (o.scroll) $('#main').scrollIntoView({ block: 'start', behavior: reduce ? 'auto' : 'smooth' });\n}\nfunction setState(st) {\n  const changed = st !== state;\n  state = st; reqEl.dataset.state = st;\n  $('#req-title').textContent = TEXT[st][0];\n  $('#req-lead').textContent = TEXT[st][1];\n  const D = { waiting: 1, answered: 3, closed: 4 }[st], C = st === 'waiting' ? 1 : -1;\n  $$('#steps li').forEach((li, k) => {\n    li.classList.toggle('done', k < D); li.classList.toggle('cur', k === C);\n    if (k === (C >= 0 ? C : D - 1)) li.setAttribute('aria-current', 'step'); else li.removeAttribute('aria-current');\n  });\n  $('#waitbox').hidden = st !== 'waiting';\n  $('#dots').hidden = st !== 'waiting';\n  $('#okmark').toggleAttribute('hidden', st === 'waiting');   // SVG elements have no .hidden property\n  $('#codeline').hidden = st === 'waiting';\n  $('#thread').hidden = !replies.length;\n  if (replies.length && lead.createdAt) $('#took').textContent = dur((replies[0].at - lead.createdAt) / 1000);\n  $('#queue').textContent = !lead.queue ? '—' : lead.queue === 1 ? 'نفر اول' : 'نفر ' + nf.format(lead.queue);\n  phoneCard(); tick();\n  return changed;\n}\nfunction tick() {\n  if (!lead || !lead.createdAt || state !== 'waiting') { $('#late').hidden = true; return; }\n  const s = Math.max(0, (Date.now() + offset - lead.createdAt) / 1000), total = EXPECTED_MIN * 60;\n  $('#elapsed').textContent = clock(s);\n  $('#fill').style.width = Math.min(100, s / total * 100) + '%';\n  $('#late').hidden = s < total;\n}\nfunction schedule() {\n  if (!lead) return;\n  const age = lead.createdAt ? (Date.now() + offset - lead.createdAt) / 1000 : 0;\n  const wait = state === 'closed' ? 120000 : replies.length ? 20000 : age < 60 ? 4000 : age < 300 ? 8000 : age < 1800 ? 15000 : 30000;\n  pollT = setTimeout(poll, document.hidden ? Math.max(wait, 30000) : wait);\n}\nasync function poll() {\n  if (!lead) return;\n  const tok = lead.token;\n  try {\n    const r = await fetch(STATUS_URL + '?t=' + encodeURIComponent(tok), { cache: 'no-store', headers: NGROK });\n    const j = await r.json();\n    if (!lead || lead.token !== tok) return;\n    if (j && j.ok) {\n      offset = j.now - Date.now(); lead.createdAt = j.createdAt;\n      if (j.id) { lead.id = j.id; $('#code').textContent = $('#code2').textContent = j.id; }\n      apply(j);\n    } else if (j && j.status === 'expired') {\n      if (!replies.length) { reset('این درخواست دیگر در دسترس نیست. اگر هنوز پاسخی نگرفته‌اید، دوباره ثبت کنید یا با ' + LRI + PHONE + PDI + ' تماس بگیرید.'); return; }\n      return;   // keep showing the replies already on screen, stop asking\n    }\n  } catch (e) {}\n  schedule();\n}\nfunction bubble(r) {\n  const m = el('div', 'msg' + (r.kind === 'phone' ? ' ask' : '')), t = el('time', null, hhmm(r.at));\n  t.dateTime = new Date(r.at).toISOString();\n  m.append(el('span', 'who', 'همکار نیو لایف'), el('p', null, r.text), t);\n  return m;\n}\nfunction apply(j) {\n  const list = Array.isArray(j.replies) ? j.replies : [];\n  const key = list.map(r => r.at).join(','), lastAt = replies.length ? replies[replies.length - 1].at : 0;\n  const added = list.filter(r => r.at > lastAt).length;\n  if (key !== repKey) { $('#msgs').replaceChildren(...list.map(bubble)); repKey = key; }\n  replies = list.slice();\n  lead.hasPhone = !!j.hasPhone; lead.phoneRequested = !!j.phoneRequested; lead.queue = j.queue || 0;\n  const changed = setState(j.status === 'closed' ? 'closed' : list.length ? 'answered' : 'waiting');\n  if (primed && (changed || added)) {\n    if (added) alertUser(added);\n    if (changed) { $('#req-title').focus({ preventScroll: true }); $('#main').scrollIntoView({ block: 'start', behavior: reduce ? 'auto' : 'smooth' }); }\n  }\n  primed = true;\n}\nfunction alertUser(n) {\n  try { if (navigator.vibrate) navigator.vibrate([120, 60, 120]); } catch (e) {}\n  if (document.hidden) { unread += n; document.title = '(' + nf.format(unread) + ') پاسخ تازه | نیو لایف'; }\n}\nfunction begin(l, fresh) {\n  lead = { token: l.token, id: l.id, createdAt: l.createdAt || 0, hasPhone: l.hasPhone !== false, phoneRequested: false, queue: l.queue || 0 };\n  offset = l.now ? l.now - Date.now() : 0;\n  replies = []; repKey = ''; state = ''; phoneSaved = ''; primed = !!fresh;\n  $('#msgs').textContent = ''; $('#pin').value = ''; $('#perr').textContent = '';\n  $('#code').textContent = $('#code2').textContent = lead.id || '';\n  save(lead);\n  setState('waiting');\n  view('req', { focus: fresh, scroll: fresh });\n  clearInterval(tickT); tickT = setInterval(tick, 1000);\n  clearTimeout(pollT);\n  poll();   // right away: fills in the queue position and anything that already changed\n}\nfunction reset(msg) {\n  clearTimeout(pollT); clearInterval(tickT);\n  lead = null; replies = []; repKey = ''; state = ''; forget();\n  form.reset(); refresh(); selectTab(0);\n  em.value = store.get('nl_email'); phoneIn.value = store.get('nl_phone');\n  errEl.textContent = msg || '';\n  view('form', { scroll: true });\n}\ndocument.addEventListener('visibilitychange', () => {\n  if (document.hidden) return;\n  unread = 0; document.title = baseTitle;\n  if (lead) { clearTimeout(pollT); poll(); }\n});\n$$('[data-again]').forEach(b => b.addEventListener('click', () => reset()));\n\n/* ---- add a phone number after sending ---- */\nconst pcard = $('#pcard'), pform = $('#pform'), pin = $('#pin'), perr = $('#perr'), pbtn = $('#pbtn');\nfunction phoneCard() {\n  const need = !!lead && !lead.hasPhone && state !== 'closed';\n  pcard.hidden = state === 'closed' || (!need && !phoneSaved);\n  $('#pc-ask').hidden = !!phoneSaved; $('#pc-ok').hidden = !phoneSaved;\n  pcard.classList.toggle('saved', !!phoneSaved);\n  pcard.classList.toggle('asked', !phoneSaved && !!(lead && lead.phoneRequested));\n  if (phoneSaved) { $('#pc-okp').textContent = 'شماره ' + LRI + phoneSaved + PDI + ' برای همکاران ما فرستاده شد. برای هماهنگی مشاوره با شما تماس می‌گیرند.'; return; }\n  const asked = !!(lead && lead.phoneRequested);\n  $('#pc-h').textContent = asked ? 'همکاران ما شماره موبایل شما را خواسته‌اند' : 'شماره موبایل خود را اضافه کنید';\n  $('#pc-p').textContent = asked\n    ? 'شماره را وارد کنید تا برای مشاوره و تعیین وقت با شما تماس بگیرند.'\n    : 'درخواست شما بدون شماره موبایل ثبت شده است. با وارد کردن شماره، همکاران ما می‌توانند با شما تماس بگیرند.';\n}\npin.addEventListener('input', () => { perr.textContent = ''; pin.removeAttribute('aria-invalid'); });\npform.addEventListener('submit', async e => {\n  e.preventDefault();\n  if (!lead || pbtn.disabled) return;\n  const p = normPhone(pin.value.trim());\n  if (!PHONE_RE.test(p)) {\n    perr.textContent = p ? 'شماره موبایل معتبر نیست؛ مثل 09123456789 وارد کنید.' : 'شماره موبایل را وارد کنید.';\n    pin.setAttribute('aria-invalid', 'true'); pin.focus(); return;\n  }\n  pbtn.disabled = true; pbtn.textContent = 'در حال ثبت…';\n  try {\n    const r = await fetch(PHONE_URL, { method: 'POST', headers: { 'Content-Type': 'application/json', ...NGROK }, body: JSON.stringify({ t: lead.token, phone: p }) });\n    const j = await r.json().catch(() => ({}));\n    if (!r.ok || !j.ok) throw (j.error || r.status);\n    store.set('nl_phone', p);\n    phoneSaved = p; lead.hasPhone = true; phoneCard();\n  } catch (x) {\n    perr.textContent = x === 'phone' ? 'شماره موبایل معتبر نیست؛ مثل 09123456789 وارد کنید.'\n      : x === 'expired' ? 'این درخواست دیگر در دسترس نیست؛ لطفاً با ' + LRI + PHONE + PDI + ' تماس بگیرید.'\n      : x === 'too_many' ? 'شماره چند بار تغییر کرده است؛ برای تغییر دوباره با ' + LRI + PHONE + PDI + ' تماس بگیرید.'\n      : 'شماره ثبت نشد. اتصال اینترنت را بررسی کنید و دوباره بزنید.';\n  }\n  pbtn.disabled = false; pbtn.textContent = 'ثبت شماره';\n});\n\n/* ---- email: suggest @gmail.com ---- */\nem.value = new URLSearchParams(location.search).get('email') || store.get('nl_email');\nphoneIn.value = store.get('nl_phone');\nem.addEventListener('input', () => {\n  const v = em.value.trim(), o = document.createElement('option');\n  o.value = v + '@gmail.com';\n  $('#sg').replaceChildren(...(v && !v.includes('@') ? [o] : []));\n});\nem.addEventListener('blur', () => { const v = em.value.trim(); if (v && !v.includes('@')) em.value = v + '@gmail.com'; });\n\n/* ---- submit ---- */\nconst fieldOf = { name: 'firstName', age: 'age', email: 'email', phone: 'phone' };\nconst validate = b =>\n  !b.firstName ? ['name', 'نام را وارد کنید.']\n  : b.age && !(/^\\d+$/.test(b.age) && +b.age > 0 && +b.age < 121) ? ['age', 'سن را به‌درستی وارد کنید (یا خالی بگذارید).']\n  : b.email && !/^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/.test(b.email) ? ['email', 'آدرس جیمیل معتبر نیست.']\n  : b.phone && !PHONE_RE.test(b.phone) ? ['phone', 'شماره موبایل معتبر نیست؛ مثل 09123456789 وارد کنید.']\n  : !b.services.length ? ['services', 'حداقل یکی از خدمات را از دسته‌های بالا انتخاب کنید.'] : null;\n\nform.addEventListener('input', e => {\n  if (e.target.name !== 'svc') { errEl.textContent = ''; e.target.removeAttribute('aria-invalid'); }\n});\n\nlet busy = false, pending = null, skipOnce = false;\nform.addEventListener('submit', e => {\n  e.preventDefault();\n  if (busy) return;\n  const d = new FormData(form), g = k => dig(d.get(k) || '').trim();\n  const body = { firstName: g('firstName'), lastName: g('lastName'), age: g('age'), email: g('email').toLowerCase(), phone: normPhone(g('phone')), services: collect(), website: String(d.get('website') || '') };\n  const bad = validate(body);\n  $$('input[aria-invalid]', form).forEach(i => i.removeAttribute('aria-invalid'));\n  if (bad) {\n    errEl.textContent = bad[1];\n    if (bad[0] === 'services') { $('#svc').scrollIntoView({ block: 'start', behavior: reduce ? 'auto' : 'smooth' }); }\n    else { const f = form.elements[fieldOf[bad[0]]]; f.setAttribute('aria-invalid', 'true'); f.focus(); }\n    return;\n  }\n  errEl.textContent = '';\n  if (!body.phone && !skipOnce) { askPhone(body); return; }\n  skipOnce = false;\n  send(body);\n});\n\n/* missing phone number: warn, and let them type it right there */\nconst sheet = $('#sheet'), sheetPhone = $('#sheet-phone'), sheetErr = $('#sheet-err');\nfunction askPhone(body) {\n  if (typeof sheet.showModal !== 'function') {          // very old browser: inline warning instead of the sheet\n    errEl.textContent = 'شماره موبایل را وارد نکرده‌اید. لطفاً شماره خود را وارد کنید تا همکاران ما بتوانند با شما تماس بگیرند. برای ارسال بدون شماره، دوباره «ثبت درخواست» را بزنید.';\n    skipOnce = true; phoneIn.setAttribute('aria-invalid', 'true'); phoneIn.focus(); return;\n  }\n  pending = body;\n  sheetErr.textContent = ''; sheetPhone.value = ''; sheetPhone.removeAttribute('aria-invalid');\n  sheet.showModal();\n}\nsheetPhone.addEventListener('input', () => { sheetErr.textContent = ''; sheetPhone.removeAttribute('aria-invalid'); });\n$('#sheet-form').addEventListener('submit', e => {\n  e.preventDefault();\n  const p = normPhone(sheetPhone.value.trim());\n  if (!PHONE_RE.test(p)) {\n    sheetErr.textContent = p ? 'شماره موبایل معتبر نیست؛ مثل 09123456789 وارد کنید.' : 'شماره موبایل را وارد کنید.';\n    sheetPhone.setAttribute('aria-invalid', 'true'); sheetPhone.focus(); return;\n  }\n  const b = pending; pending = null; sheet.close();\n  phoneIn.value = p; b.phone = p; send(b);\n});\n$('#sheet-skip').addEventListener('click', () => { const b = pending; pending = null; sheet.close(); if (b) send(b); });\nsheet.addEventListener('click', e => { if (e.target === sheet) sheet.close(); });   // tap on the dimmed area\nsheet.addEventListener('close', () => { if (pending) { pending = null; phoneIn.focus(); } });\n\nasync function send(body) {\n  if (busy) return;\n  busy = true; sendBtn.disabled = true; sendBtn.textContent = 'در حال ارسال…';\n  try {\n    const r = await fetch(SUBMIT_URL, { method: 'POST', headers: { 'Content-Type': 'application/json', ...NGROK }, body: JSON.stringify(body) });\n    const j = await r.json().catch(() => ({}));\n    if (!r.ok || !j.ok || !j.token) throw (j.error || r.status);\n    if (body.email) store.set('nl_email', body.email);\n    if (body.phone) store.set('nl_phone', body.phone);\n    begin(j, true);\n  } catch (x) {\n    errEl.textContent = x === 'too_many' || x === 429\n      ? 'در این لحظه درخواست‌های زیادی ثبت شده است. چند دقیقه بعد دوباره تلاش کنید.'\n      : x === 'operator_not_linked' || x === 503\n      ? 'ثبت آنلاین درخواست موقتاً در دسترس نیست. لطفاً با ' + LRI + PHONE + PDI + ' تماس بگیرید.'\n      : x === 'phone' ? 'شماره موبایل معتبر نیست؛ مثل 09123456789 وارد کنید.'\n      : 'درخواست ارسال نشد. اتصال اینترنت را بررسی کنید و دوباره تلاش کنید، یا با ' + LRI + PHONE + PDI + ' تماس بگیرید.';\n  }\n  busy = false; sendBtn.disabled = false; sendBtn.textContent = 'ثبت درخواست';\n}\n\n/* ---- returning visitor: show the request that is still open ---- */\nrefresh();\nconst open = load();\nif (open) begin(open, false);\n})();\n</script>\n</body>\n</html>\n",
+        "options": {
+          "responseHeaders": {
+            "entries": [
+              {
+                "name": "Content-Type",
+                "value": "text/html; charset=utf-8"
+              }
+            ]
+          }
+        }
+      },
+      "id": "99e15039-0840-46af-9e92-01437b9d754c",
+      "name": "Serve Page",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [
+        260,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "path": "newlife-submit",
+        "httpMethod": "POST",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "id": "3723e205-0aa0-43b7-8e46-5edcd4da3e02",
+      "name": "Submit (POST)",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        0,
+        300
+      ],
+      "webhookId": "c0398817-1c8d-415c-ba0d-82a7ae641958"
+    },
+    {
+      "parameters": {
+        "jsCode": "// Prepare Data: validate the form, store the lead (so the visitor's page can poll for replies)\n// and decide what happens next.\n//   route \"send\"    -> new lead: build the Excel file and deliver it to Telegram\n//   route \"respond\" -> nothing to deliver (identical re-submit, or bot trap): answer the page right away\n//   route \"reject\"  -> answer the page with an error status\nconst TTL_MS = 72 * 3600 * 1000;   // how long a lead and its replies stay available to the visitor's page\nconst DUP_MS = 10 * 60 * 1000;     // an identical re-submit inside this window reuses the first lead\nconst FLOOD_MAX = 30;              // max new leads per 10 minutes (keeps the Telegram chat safe from spam)\nconst TZ = 'Asia/Tehran';\n\nconst now = Date.now();\nconst sd = $getWorkflowStaticData('global');\nsd.leads = sd.leads || {};\nsd.recent = (sd.recent || []).filter(t => now - t < 10 * 60 * 1000);\nfor (const k of Object.keys(sd.leads)) if (now - sd.leads[k].createdAt > TTL_MS) delete sd.leads[k];\n\nconst b = $input.first().json.body || {};\nconst reject = (status, error) => [{ json: { route: 'reject', ok: false, status, error, now } }];\nconst clean = (v, n) => String(v == null ? '' : v).replace(/[\\u0000-\\u001f\\u007f‎‏‪-‮⁦-⁩]/g, ' ').replace(/\\s+/g, ' ').trim().slice(0, n);\nconst latin = s => s.replace(/[۰-۹]/g, d => '۰۱۲۳۴۵۶۷۸۹'.indexOf(d)).replace(/[٠-٩]/g, d => '٠١٢٣٤٥٦٧٨٩'.indexOf(d));\nconst normPhone = p => {\n  p = latin(p).replace(/[\\s\\-().]/g, '');\n  if (/^\\+98/.test(p)) p = '0' + p.slice(3); else if (/^0098/.test(p)) p = '0' + p.slice(4); else if (/^9\\d{9}$/.test(p)) p = '0' + p;\n  return p;\n};\n\n// Hidden \"website\" field: humans leave it empty, bots fill it. Pretend success, deliver nothing.\nif (clean(b.website, 80)) {\n  return [{ json: { route: 'respond', ok: true, id: 'NL-00000', token: 'x'.repeat(24), createdAt: now, now, hasPhone: true } }];\n}\n\nconst firstName = clean(b.firstName, 60);\nconst lastName = clean(b.lastName, 60);\nconst ageRaw = latin(clean(b.age, 4));\nconst age = ageRaw ? Math.floor(Number(ageRaw)) : null;   // optional\nconst email = clean(b.email, 120).toLowerCase();\nconst phone = normPhone(clean(b.phone, 24));              // optional, but the page warns when it is missing\nconst services = (Array.isArray(b.services) ? b.services : []).slice(0, 12).map(s => ({\n  category: clean(s && s.category, 60),\n  items: (Array.isArray(s && s.items) ? s.items : []).slice(0, 30).map(i => clean(i, 60)).filter(Boolean)\n})).filter(s => s.category);\n\nif (!firstName) return reject(400, 'name');\nif (ageRaw && !(age > 0 && age < 121)) return reject(400, 'age');\nif (email && !/^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/.test(email)) return reject(400, 'email');\nif (phone && !/^09\\d{9}$/.test(phone)) return reject(400, 'phone');\nif (!services.length) return reject(400, 'services');\n\n// Same person pressing submit twice (or retrying after a flaky connection): reuse the delivered lead.\nconst fp = [firstName, lastName, age, email, phone, JSON.stringify(services)].join('|');\nfor (const k of Object.keys(sd.leads)) {\n  const L = sd.leads[k];\n  if (L.fp === fp && L.delivered && now - L.createdAt < DUP_MS) {\n    return [{ json: { route: 'respond', ok: true, id: L.id, token: L.token, createdAt: L.createdAt, now, hasPhone: !!L.phone, duplicate: true } }];\n  }\n}\n\n// Telegram bots can only write to people who pressed Start in the bot: that chat is saved by \"Handle Telegram Update\".\nif (!sd.operatorChatId) return reject(503, 'operator_not_linked');\nif (sd.recent.length >= FLOOD_MAX) return reject(429, 'too_many');\n\nfunction rnd(n, alpha) {\n  const lim = 256 - (256 % alpha.length);\n  let s = '';\n  while (s.length < n) {\n    let bytes;\n    try { bytes = crypto.getRandomValues(new Uint8Array(n * 2)); }\n    catch (e) { bytes = Array.from({ length: n * 2 }, () => Math.floor(Math.random() * 256)); }\n    for (const x of bytes) if (x < lim && s.length < n) s += alpha[x % alpha.length];\n  }\n  return s;\n}\nlet id;\ndo { id = 'NL-' + rnd(5, 'ABCDEFGHJKMNPQRSTUVWXYZ23456789'); } while (Object.values(sd.leads).some(l => l.id === id));\nconst token = rnd(24, 'abcdefghjkmnpqrstuvwxyz23456789');   // secret the visitor's page uses to read the replies\n\nconst d = new Date(now);\nlet createdFa;\ntry {\n  createdFa = new Intl.DateTimeFormat('fa-IR-u-ca-persian', { timeZone: TZ, year: 'numeric', month: '2-digit', day: '2-digit', hour: '2-digit', minute: '2-digit', hour12: false }).format(d);\n} catch (e) { createdFa = d.toISOString(); }\n\nconst lead = {\n  id, token, createdAt: now, createdFa, createdIso: d.toISOString(),\n  firstName, lastName, age, email, phone, services, fp,\n  delivered: false, tgMsgId: null, replies: [],\n  closed: false, closedAt: null, phoneRequested: false, phoneEdits: 0\n};\nsd.leads[token] = lead;\nsd.recent.push(now);\n\nlet caption = [\n  `🆕 درخواست جدید  ${id}`,\n  '',\n  `👤 ${(firstName + ' ' + lastName).trim()}`,\n  phone ? `📞 ${phone}` : '📵 شماره موبایل وارد نشده؛ با دکمه «📞 درخواست شماره» از متقاضی بخواهید شماره‌اش را ثبت کند.',\n  age ? `🎂 سن: ${age}` : null,\n  email ? `✉️ ${email}` : null,\n  '',\n  '💆 خدمات انتخابی:',\n  ...services.map(s => `• ${s.category}${s.items.length ? ': ' + s.items.join('، ') : ''}`),\n  '',\n  `🕒 ${createdFa}`,\n  '',\n  '✍️ برای پاسخ، دکمه «پاسخ به متقاضی» را بزنید یا روی همین پیام Reply کنید.'\n].filter(x => x !== null).join('\\n');\nif (caption.length > 1000) caption = caption.slice(0, 997) + '...';\n\nreturn [{ json: { route: 'send', chatId: sd.operatorChatId, caption, lead } }];\n"
+      },
+      "id": "2a48deb1-1d0e-4695-aa8b-b44426307b6c",
+      "name": "Prepare Data",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        260,
+        300
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "7ddc7c99-36b6-4eb7-a589-ea04e72eec7c",
+              "leftValue": "={{ $json.route }}",
+              "rightValue": "send",
+              "operator": {
+                "type": "string",
+                "operation": "equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "0add5c22-ca4b-4e14-b83a-8b58b0f323ab",
+      "name": "New Lead?",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        520,
+        300
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "// Build Excel Row: one row with every field of the lead, in the order the sheet should show them.\nconst L = $input.first().json.lead;\nreturn [{\n  json: {\n    'شناسه': L.id,\n    'تاریخ ثبت': L.createdFa,\n    'نام': L.firstName,\n    'نام خانوادگی': L.lastName,\n    'سن': L.age == null ? '' : L.age,\n    'جیمیل': L.email,\n    'شماره تماس': L.phone || 'وارد نشده',\n    'دسته‌ها': L.services.map(s => s.category).join('، '),\n    'خدمات انتخابی': L.services.map(s => s.category + (s.items.length ? ': ' + s.items.join('، ') : '')).join(' | '),\n    'زمان ثبت (UTC)': L.createdIso\n  }\n}];\n"
+      },
+      "id": "81ecb73d-430b-45d0-ac9d-39b78266c867",
+      "name": "Build Excel Row",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        780,
+        220
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "xlsx",
+        "binaryPropertyName": "data",
+        "options": {
+          "fileName": "={{ 'NewLife-Lead-' + $('Prepare Data').first().json.lead.id + '.xlsx' }}",
+          "sheetName": "Lead",
+          "headerRow": true
+        }
+      },
+      "id": "3f31d107-4cca-46ce-acf4-6a4ba56763dc",
+      "name": "Make Excel File",
+      "type": "n8n-nodes-base.convertToFile",
+      "typeVersion": 1.1,
+      "position": [
+        1040,
+        220
+      ],
+      "onError": "continueErrorOutput"
+    },
+    {
+      "parameters": {
+        "operation": "sendDocument",
+        "chatId": "={{ $('Prepare Data').first().json.chatId }}",
+        "binaryData": true,
+        "binaryPropertyName": "data",
+        "replyMarkup": "inlineKeyboard",
+        "inlineKeyboard": {
+          "rows": [
+            {
+              "row": {
+                "buttons": [
+                  {
+                    "text": "✍️ پاسخ به متقاضی",
+                    "additionalFields": {
+                      "callback_data": "={{ 'r:' + $('Prepare Data').first().json.lead.id }}"
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "row": {
+                "buttons": [
+                  {
+                    "text": "📞 درخواست شماره",
+                    "additionalFields": {
+                      "callback_data": "={{ 'p:' + $('Prepare Data').first().json.lead.id }}"
+                    }
+                  },
+                  {
+                    "text": "✅ اتمام درخواست",
+                    "additionalFields": {
+                      "callback_data": "={{ 'd:' + $('Prepare Data').first().json.lead.id }}"
+                    }
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        "additionalFields": {
+          "caption": "={{ $('Prepare Data').first().json.caption }}"
+        }
+      },
+      "id": "239f0cac-a28d-4491-a3f2-99a417ec4408",
+      "name": "Send Lead to Telegram",
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "position": [
+        1300,
+        220
+      ],
+      "onError": "continueErrorOutput"
+    },
+    {
+      "parameters": {
+        "jsCode": "// Save Message Id: remember which Telegram message belongs to which lead,\n// so a Reply to that message in Telegram finds its lead. Then answer the page.\nconst sd = $getWorkflowStaticData('global');\nconst p = $('Prepare Data').first().json;\nconst r = $input.first().json || {};\nconst msg = r.result || r;\nconst L = (sd.leads || {})[p.lead.token];\nif (L) {\n  L.delivered = true;\n  if (msg.message_id != null) L.tgMsgId = msg.message_id;\n}\nreturn [{ json: { ok: true, id: p.lead.id, token: p.lead.token, createdAt: p.lead.createdAt, now: Date.now(), hasPhone: !!p.lead.phone } }];\n"
+      },
+      "id": "a7ad954e-d0d8-4635-9289-8475eabe36c5",
+      "name": "Save Message Id",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1560,
+        220
+      ]
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "={{ $json }}",
+        "options": {
+          "responseHeaders": {
+            "entries": [
+              {
+                "name": "Cache-Control",
+                "value": "no-store"
+              }
+            ]
+          }
+        }
+      },
+      "id": "c9b65671-bb40-49a8-9701-2ec78dd32acf",
+      "name": "Respond OK",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [
+        1820,
+        220
+      ]
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "={{ $json }}",
+        "options": {
+          "responseCode": "={{ $json.status || 200 }}",
+          "responseHeaders": {
+            "entries": [
+              {
+                "name": "Cache-Control",
+                "value": "no-store"
+              }
+            ]
+          }
+        }
+      },
+      "id": "6fe59e7e-6f26-4490-9d1d-bff18f39034c",
+      "name": "Respond Rejected",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [
+        780,
+        440
+      ]
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "{ \"ok\": false, \"error\": \"delivery_failed\" }",
+        "options": {
+          "responseCode": 502,
+          "responseHeaders": {
+            "entries": [
+              {
+                "name": "Cache-Control",
+                "value": "no-store"
+              }
+            ]
+          }
+        }
+      },
+      "id": "45722bf0-43c6-48b0-a62c-025ed5090f80",
+      "name": "Respond Failed",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [
+        1560,
+        420
+      ]
+    },
+    {
+      "parameters": {
+        "path": "newlife-status",
+        "httpMethod": "GET",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "id": "14865e88-3a07-41dc-a6ac-6280ae7675d9",
+      "name": "Status (GET)",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        0,
+        720
+      ],
+      "webhookId": "9aa99c74-3fbd-4974-a12e-fc6a935965ff"
+    },
+    {
+      "parameters": {
+        "jsCode": "// Lookup Status: the visitor's page asks \"where is my request?\" with its secret token.\n// Read-only on purpose: it runs every few seconds, so it never writes to static data.\nconst TTL_MS = 72 * 3600 * 1000;\nconst sd = $getWorkflowStaticData('global');\nconst t = String(($input.first().json.query || {}).t || '');\nconst leads = sd.leads || {};\nconst now = Date.now();\nconst live = l => l && now - l.createdAt <= TTL_MS;\nconst L = t ? leads[t] : null;\nif (!live(L)) return [{ json: { ok: false, status: 'expired', now } }];\n\nconst status = L.closed ? 'closed' : L.replies.length ? 'answered' : 'waiting';\n// place in the waiting list: open requests with no reply yet that arrived earlier, plus this one\nconst queue = status !== 'waiting' ? 0\n  : 1 + Object.values(leads).filter(o => o !== L && live(o) && o.delivered && !o.closed && !o.replies.length && o.createdAt < L.createdAt).length;\n\nreturn [{ json: {\n  ok: true, status, id: L.id, createdAt: L.createdAt, now,\n  replies: L.replies.map(r => ({ text: r.text, at: r.at, kind: r.kind || 'text' })),\n  hasPhone: !!L.phone, phoneRequested: !!L.phoneRequested, queue, closedAt: L.closedAt || null\n} }];\n"
+      },
+      "id": "1d895392-9251-4299-a912-5a59f9f12c3d",
+      "name": "Lookup Status",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        260,
+        720
+      ]
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "={{ $json }}",
+        "options": {
+          "responseHeaders": {
+            "entries": [
+              {
+                "name": "Cache-Control",
+                "value": "no-store"
+              }
+            ]
+          }
+        }
+      },
+      "id": "d954694a-8d8f-4dba-8ad0-6eeef42dce5c",
+      "name": "Respond Status",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [
+        520,
+        720
+      ]
+    },
+    {
+      "parameters": {
+        "path": "newlife-phone",
+        "httpMethod": "POST",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "id": "70072f46-731b-50e6-bbbe-a7111dab880a",
+      "name": "Phone (POST)",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        0,
+        980
+      ],
+      "webhookId": "efd9ea03-26f9-5d25-bc3f-035aa152cc8c"
+    },
+    {
+      "parameters": {
+        "jsCode": "// Save Phone: the visitor adds (or corrects) their mobile number after sending the request.\n// The number is stored on the lead and the operator gets a Telegram message with it.\nconst TTL_MS = 72 * 3600 * 1000;\nconst MAX_EDITS = 5;                 // how many times one request may change its number\n\nconst sd = $getWorkflowStaticData('global');\nsd.leads = sd.leads || {};\nconst b = $input.first().json.body || {};\nconst now = Date.now();\nconst respond = resp => [{ json: { route: 'respond', resp } }];\nconst latin = s => String(s == null ? '' : s).replace(/[۰-۹]/g, d => '۰۱۲۳۴۵۶۷۸۹'.indexOf(d)).replace(/[٠-٩]/g, d => '٠١٢٣٤٥٦٧٨٩'.indexOf(d));\nconst normPhone = p => {\n  p = latin(p).slice(0, 24).replace(/[\\s\\-().‎‏⁦-⁩]/g, '');\n  if (/^\\+98/.test(p)) p = '0' + p.slice(3); else if (/^0098/.test(p)) p = '0' + p.slice(4); else if (/^9\\d{9}$/.test(p)) p = '0' + p;\n  return p;\n};\nconst esc = s => String(s == null ? '' : s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');\n\nconst t = String(b.t || '');\nconst L = t ? sd.leads[t] : null;\nif (!L || now - L.createdAt > TTL_MS) return respond({ ok: false, error: 'expired' });\nconst phone = normPhone(b.phone);\nif (!/^09\\d{9}$/.test(phone)) return respond({ ok: false, error: 'phone' });\nif (L.phone === phone) return respond({ ok: true, phone });\nif ((L.phoneEdits || 0) >= MAX_EDITS) return respond({ ok: false, error: 'too_many' });\n\nconst before = L.phone;\nL.phone = phone;\nL.phoneEdits = (L.phoneEdits || 0) + 1;\nL.phoneAt = now;\nif (!sd.operatorChatId || !L.delivered) return respond({ ok: true, phone });\n\nconst name = (L.firstName + ' ' + (L.lastName || '')).trim();\nconst text = [\n  before ? '📞 <b>شماره موبایل متقاضی تغییر کرد</b>' : '📞 <b>متقاضی شماره موبایلش را ثبت کرد</b>',\n  '',\n  `<code>${L.id}</code>  ${esc(name)}`,\n  `شماره: <code>${phone}</code>` + (before ? `  (قبلی: ${before})` : ''),\n  L.phoneRequested && !before ? 'در پاسخ به «درخواست شماره» شما.' : null,\n  '',\n  'برای پاسخ دادن به متقاضی، روی همین پیام Reply کنید.'\n].filter(x => x !== null).join('\\n');\n\nreturn [{ json: { route: 'notify', chatId: sd.operatorChatId, text, leadId: L.id, resp: { ok: true, phone } } }];\n"
+      },
+      "id": "1bd19e4e-6396-5ad1-9eaf-2ffdf9dbd991",
+      "name": "Save Phone",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        260,
+        980
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "7c01c019-cf4d-559e-b1a5-cc553a375a1c",
+              "leftValue": "={{ $json.route }}",
+              "rightValue": "notify",
+              "operator": {
+                "type": "string",
+                "operation": "equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "59b6ddb8-965f-59c1-a530-984bb947b38e",
+      "name": "Tell Operator?",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        520,
+        980
+      ]
+    },
+    {
+      "parameters": {
+        "chatId": "={{ $json.chatId }}",
+        "text": "={{ $json.text }}",
+        "additionalFields": {
+          "appendAttribution": false,
+          "parse_mode": "HTML"
+        },
+        "replyMarkup": "inlineKeyboard",
+        "inlineKeyboard": {
+          "rows": [
+            {
+              "row": {
+                "buttons": [
+                  {
+                    "text": "✍️ پاسخ به متقاضی",
+                    "additionalFields": {
+                      "callback_data": "={{ 'r:' + $json.leadId }}"
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "row": {
+                "buttons": [
+                  {
+                    "text": "📞 درخواست شماره",
+                    "additionalFields": {
+                      "callback_data": "={{ 'p:' + $json.leadId }}"
+                    }
+                  },
+                  {
+                    "text": "✅ اتمام درخواست",
+                    "additionalFields": {
+                      "callback_data": "={{ 'd:' + $json.leadId }}"
+                    }
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      "id": "f7685f2b-68e0-5001-abbc-6941564ff88b",
+      "name": "Phone to Telegram",
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "position": [
+        780,
+        900
+      ],
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "={{ $('Save Phone').first().json.resp }}",
+        "options": {
+          "responseHeaders": {
+            "entries": [
+              {
+                "name": "Cache-Control",
+                "value": "no-store"
+              }
+            ]
+          }
+        }
+      },
+      "id": "9e715037-e279-5bf0-bf44-3863a5c22972",
+      "name": "Respond Phone",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [
+        1040,
+        980
+      ]
+    },
+    {
+      "parameters": {
+        "updates": [
+          "message",
+          "callback_query"
+        ],
+        "additionalFields": {}
+      },
+      "id": "a5aa57bc-5f19-4f97-9a4e-f8bfb20d6827",
+      "name": "Telegram Trigger",
+      "type": "n8n-nodes-base.telegramTrigger",
+      "typeVersion": 1.2,
+      "position": [
+        0,
+        1300
+      ],
+      "webhookId": "2fe80a15-3d4b-4fa9-8503-c71f20db7483"
+    },
+    {
+      "parameters": {
+        "jsCode": "// Handle Telegram Update: runs for every message and button press the bot receives.\n//  - the operator's chat is linked on any message (so leads can be sent there)\n//  - buttons under each lead:  ✍️ reply   📞 ask for the mobile number   ✅ finish (leaves the waiting list)\n//  - a reply to a lead message (or to the bot's \"write your reply\" prompt) is shown on the visitor's page\n//  - /list or the \"📋 لیست انتظار\" keyboard button shows the waiting list\n// Every item returned has an \"action\" that the Route node sends to the matching Telegram node.\nconst OPERATOR = 'AvidMechanic';     // Telegram username (without @) that receives and answers the requests\nconst TTL_MS = 72 * 3600 * 1000;\nconst LIST_BTN = '📋 لیست انتظار';\nconst PHONE_ASK = 'لطفاً شماره موبایل خود را در کادر زیر وارد کنید تا همکاران ما برای مشاوره و تعیین وقت با شما تماس بگیرند.';\n\nconst sd = $getWorkflowStaticData('global');\nsd.leads = sd.leads || {};\nconst upd = $input.first().json;\nconst now = Date.now();\n\n// Telegram can deliver the same update twice: skip ones we have already handled.\nsd.seen = sd.seen || [];\nif (upd.update_id != null) {\n  if (sd.seen.includes(upd.update_id)) return [];\n  sd.seen.push(upd.update_id);\n  if (sd.seen.length > 200) sd.seen.splice(0, sd.seen.length - 200);\n}\n\nconst out = [];\nconst say = (chatId, text) => out.push({ json: { action: 'text', chatId, text } });\nconst prompt = (chatId, text) => out.push({ json: { action: 'prompt', chatId, text } });\nconst menu = (chatId, text) => out.push({ json: { action: 'menu', chatId, text } });\nconst answer = (queryId, text, alert) => out.push({ json: { action: 'answer', queryId, text: String(text || '').slice(0, 190), alert: !!alert } });\n\nconst esc = s => String(s == null ? '' : s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');\nconst faNum = n => String(n).replace(/\\d/g, d => '۰۱۲۳۴۵۶۷۸۹'[d]);\nconst dur = s => {\n  s = Math.max(0, Math.round(s));\n  const h = Math.floor(s / 3600), mi = Math.floor((s % 3600) / 60), se = s % 60, p = [];\n  if (h) p.push(faNum(h) + ' ساعت');\n  if (mi) p.push(faNum(mi) + ' دقیقه');\n  if (!h && (se || !mi)) p.push(faNum(se) + ' ثانیه');\n  return p.join(' و ');\n};\nconst nameOf = L => (L.firstName + ' ' + (L.lastName || '')).trim();\nconst short = (s, n) => (s.length > n ? s.slice(0, n - 1) + '…' : s);\nconst live = () => Object.values(sd.leads).filter(l => now - l.createdAt <= TTL_MS);\nconst byId = id => live().find(l => l.id === String(id || '').toUpperCase()) || null;\nconst isOperator = u => !!u && !u.is_bot && String(u.username || '').toLowerCase() === OPERATOR.toLowerCase();\nconst linked = chatId => !!sd.operatorChatId && String(chatId) === String(sd.operatorChatId);\nconst addReply = (L, text, kind) => {\n  L.replies.push({ text: text.slice(0, 2000), at: now, kind });\n  if (L.replies.length > 20) L.replies.shift();\n  return L.replies.length === 1 ? `\\n⏱ زمان پاسخ‌گویی: ${dur((now - L.createdAt) / 1000)}` : '';\n};\n\nfunction listText() {\n  const open = live().filter(l => l.delivered && !l.closed).sort((a, b) => a.createdAt - b.createdAt);\n  if (!open.length) return '📋 <b>لیست انتظار خالی است</b>\\nهمه درخواست‌ها تکمیل شده‌اند.';\n  const waiting = open.filter(l => !l.replies.length), talking = open.filter(l => l.replies.length);\n  const lines = ['📋 <b>لیست انتظار</b>'];\n  let room = 3500, hidden = 0;\n  const add = s => { if (room - s.length < 0) { hidden++; return; } lines.push(s); room -= s.length; };\n  if (waiting.length) {\n    add(`\\n⏳ <b>منتظر پاسخ (${faNum(waiting.length)})</b>`);\n    waiting.forEach((l, i) => add(`${faNum(i + 1)}. <code>${l.id}</code>  ${esc(short(nameOf(l), 32))}\\n      ⏱ ${dur((now - l.createdAt) / 1000)} انتظار  ${l.phone ? '📞 ' + l.phone : '📵 بدون شماره'}`));\n  }\n  if (talking.length) {\n    add(`\\n💬 <b>پاسخ داده شده، هنوز باز (${faNum(talking.length)})</b>`);\n    talking.forEach((l, i) => add(`${faNum(i + 1)}. <code>${l.id}</code>  ${esc(short(nameOf(l), 32))}\\n      آخرین پاسخ: ${dur((now - l.replies[l.replies.length - 1].at) / 1000)} پیش  ${l.phone ? '📞 ' + l.phone : '📵 بدون شماره'}`));\n  }\n  if (hidden) lines.push(`\\n… و ${faNum(hidden)} مورد دیگر`);\n  lines.push('', 'پاسخ: دکمه «✍️ پاسخ به متقاضی» زیر پیام همان درخواست، یا کد را اول پیام بنویسید (مثل <code>NL-AB3CD</code> متن پاسخ).', 'خارج کردن از لیست: دکمه «✅ اتمام درخواست».');\n  return lines.join('\\n');\n}\n\n/* ---------- button presses ---------- */\nconst cq = upd.callback_query;\nif (cq) {\n  const chat = cq.message && cq.message.chat;\n  if (!chat || chat.type !== 'private') { answer(cq.id); return out; }\n  if (isOperator(cq.from)) sd.operatorChatId = chat.id;\n  if (!linked(chat.id)) { answer(cq.id, 'این دکمه فقط برای تیم نیو لایف فعال است.', true); return out; }\n  const mm = /^([rpd]):(NL-[A-Z2-9]{5})$/.exec(String(cq.data || ''));\n  const L = mm ? byId(mm[2]) : null;\n  if (!L) { answer(cq.id, 'این درخواست پیدا نشد یا منقضی شده است (درخواست‌ها ۷۲ ساعت نگه داشته می‌شوند).', true); return out; }\n  const chatId = chat.id, who = `<code>${L.id}</code> (${esc(short(nameOf(L), 40))})`;\n\n  if (mm[1] === 'r') {                                   // ✍️ reply\n    answer(cq.id, 'متن پاسخ را بنویسید');\n    prompt(chatId, `✍️ پاسخ به ${who}\\nمتن پاسخ را در جواب همین پیام بنویسید و بفرستید.` + (L.closed ? '\\n(این درخواست تکمیل شده بود؛ با پاسخ شما دوباره باز می‌شود.)' : ''));\n  } else if (mm[1] === 'p') {                            // 📞 ask for the number\n    if (L.phone) answer(cq.id, `شماره این متقاضی ثبت شده است: ${L.phone}`, true);\n    else if (L.closed) answer(cq.id, 'این درخواست تکمیل شده است.', true);\n    else if (L.phoneRequested) answer(cq.id, 'درخواست شماره قبلاً برای متقاضی فرستاده شده است.', true);\n    else {\n      L.phoneRequested = true;\n      const took = addReply(L, PHONE_ASK, 'phone');\n      answer(cq.id, 'درخواست شماره فرستاده شد');\n      say(chatId, `📞 از ${who} خواسته شد شماره موبایلش را وارد کند. به‌محض ثبت، همین‌جا خبرتان می‌کنم.` + took);\n    }\n  } else {                                               // ✅ finish\n    if (L.closed) answer(cq.id, 'این درخواست قبلاً تکمیل شده است.', true);\n    else {\n      L.closed = true; L.closedAt = now;\n      answer(cq.id, 'درخواست تکمیل شد');\n      say(chatId, `✅ ${who} تکمیل شد و از لیست انتظار خارج شد. صفحه متقاضی هم «تکمیل شد» نشان می‌دهد.\\nاگر لازم شد دوباره پاسخ بدهید، روی پیام درخواست Reply کنید؛ درخواست دوباره باز می‌شود.`);\n    }\n  }\n  return out;\n}\n\n/* ---------- messages ---------- */\nconst m = upd.message;\nif (!m || !m.chat || m.chat.type !== 'private' || !m.from || m.from.is_bot) return out;\nconst chatId = m.chat.id;\nconst text = String(m.text || '').trim();\n\n// The operator is recognised by Telegram username, then remembered by chat id.\nif (isOperator(m.from)) sd.operatorChatId = chatId;\nif (!linked(chatId)) {\n  if (/^\\/start\\b/i.test(text)) say(chatId, 'این ربات فقط برای تیم نیو لایف فعال است.');\n  return out;\n}\n\nif (/^\\/(start|help)\\b/i.test(text)) {\n  menu(chatId, [\n    '✅ این حساب برای دریافت درخواست‌های نیو لایف فعال شد.',\n    '',\n    'هر درخواست جدید همراه با فایل اکسل و این دکمه‌ها همین‌جا می‌آید:',\n    '✍️ <b>پاسخ به متقاضی</b>: متن شما همان لحظه در صفحه متقاضی نمایش داده می‌شود.',\n    '📞 <b>درخواست شماره</b>: از متقاضی می‌خواهد شماره موبایلش را وارد کند؛ شماره که ثبت شد، همین‌جا می‌آید.',\n    '✅ <b>اتمام درخواست</b>: درخواست را تکمیل می‌کند و از لیست انتظار خارج می‌کند.',\n    '',\n    `${LIST_BTN}: دکمه پایین صفحه یا دستور /list`\n  ].join('\\n'));\n  return out;\n}\nif (/^\\/(list|waiting)\\b/i.test(text) || text === LIST_BTN || /^لیست( انتظار)?$/.test(text)) { say(chatId, listText()); return out; }\nif (!text) { say(chatId, 'فقط پاسخ متنی پشتیبانی می‌شود.'); return out; }\n\nconst leads = live();\nlet lead = null, body = text;\nconst rt = m.reply_to_message;\nif (rt) {\n  if (rt.message_id != null) lead = leads.find(l => l.tgMsgId === rt.message_id) || null;\n  if (!lead) {\n    // a reply to the bot's prompt, phone notice or confirmation: they name exactly one request code\n    const codes = [...new Set(String(rt.text || rt.caption || '').match(/NL-[A-Z2-9]{5}/g) || [])];\n    if (codes.length === 1) lead = byId(codes[0]);\n  }\n}\nif (!lead) {\n  // fallback: start the message with the request code, e.g.  NL-AB3CD  متن پاسخ\n  const c = /^#?\\s*(NL-[A-Z2-9]{5})\\b[\\s:：\\-–]*/i.exec(text);\n  if (c) {\n    lead = byId(c[1]);\n    if (lead) body = text.slice(c[0].length).trim();\n  }\n}\nif (!lead) { say(chatId, 'این پیام به هیچ درخواستی وصل نشد. زیر پیام همان درخواست دکمه «✍️ پاسخ به متقاضی» را بزنید، روی پیام درخواست Reply کنید، یا کد درخواست (مثل <code>NL-AB3CD</code>) را اول پیام بنویسید.'); return out; }\nif (!body) { say(chatId, 'متن پاسخ خالی است.'); return out; }\n\nconst reopened = lead.closed;\nlead.closed = false; lead.closedAt = null;\nconst took = addReply(lead, body, 'text');\nsay(chatId, `✅ پاسخ شما برای <code>${lead.id}</code> ثبت شد و همین الان در صفحه متقاضی نمایش داده می‌شود.` + (reopened ? '\\n↩️ این درخواست دوباره باز شد.' : '') + took);\nreturn out;\n"
+      },
+      "id": "16765537-fee4-45f4-bd70-3c7ccacf58e1",
+      "name": "Handle Telegram Update",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        260,
+        1300
+      ]
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "2aeedc03-c52f-57bf-bd61-e6f5330a12cc",
+                    "leftValue": "={{ $json.action }}",
+                    "rightValue": "text",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "text"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "581bd3c4-e83b-5b9d-bb44-fa310aab33bf",
+                    "leftValue": "={{ $json.action }}",
+                    "rightValue": "prompt",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "prompt"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "2e73a87a-476c-5d03-9ce2-757fa3111a63",
+                    "leftValue": "={{ $json.action }}",
+                    "rightValue": "menu",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "menu"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "169b208d-5238-58bd-9e82-546c5d4e83e9",
+                    "leftValue": "={{ $json.action }}",
+                    "rightValue": "answer",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "answer"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "f0af0e2b-6a61-55ae-ae13-08af1a6e97d3",
+      "name": "Route",
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3.2,
+      "position": [
+        520,
+        1300
+      ]
+    },
+    {
+      "parameters": {
+        "chatId": "={{ $json.chatId }}",
+        "text": "={{ $json.text }}",
+        "additionalFields": {
+          "appendAttribution": false,
+          "parse_mode": "HTML"
+        }
+      },
+      "id": "722394fa-522f-4db8-97a5-75d59b0f59f6",
+      "name": "Telegram Reply",
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "position": [
+        800,
+        1120
+      ],
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "chatId": "={{ $json.chatId }}",
+        "text": "={{ $json.text }}",
+        "additionalFields": {
+          "appendAttribution": false,
+          "parse_mode": "HTML"
+        },
+        "replyMarkup": "forceReply",
+        "forceReply": {
+          "force_reply": true
+        }
+      },
+      "id": "225450a8-83cd-5f41-ae2c-600535b1bd71",
+      "name": "Ask for Reply",
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "position": [
+        800,
+        1300
+      ],
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "chatId": "={{ $json.chatId }}",
+        "text": "={{ $json.text }}",
+        "additionalFields": {
+          "appendAttribution": false,
+          "parse_mode": "HTML"
+        },
+        "replyMarkup": "replyKeyboard",
+        "replyKeyboard": {
+          "rows": [
+            {
+              "row": {
+                "buttons": [
+                  {
+                    "text": "📋 لیست انتظار"
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        "replyKeyboardOptions": {
+          "resize_keyboard": true
+        }
+      },
+      "id": "2c804220-bbec-51dc-9b42-16a54522c7f4",
+      "name": "Show Menu",
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "position": [
+        800,
+        1480
+      ],
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "resource": "callback",
+        "operation": "answerQuery",
+        "queryId": "={{ $json.queryId }}",
+        "additionalFields": {
+          "text": "={{ $json.text }}",
+          "show_alert": "={{ $json.alert }}"
+        }
+      },
+      "id": "9badd69d-89fd-5bbc-b3b9-140dced2b46d",
+      "name": "Answer Button",
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "position": [
+        800,
+        1660
+      ],
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "content": "## NewLife request page: setup\n1. **Telegram bot.** Create one with @BotFather, add its token as a *Telegram API* credential, and select it on all **7** Telegram nodes: *Send Lead to Telegram*, *Phone to Telegram*, *Telegram Trigger*, *Telegram Reply*, *Ask for Reply*, *Show Menu*, *Answer Button*.\n2. **Publish / activate** this workflow. n8n must be reachable over **HTTPS**. If an older version was already active, deactivate and activate once so Telegram also sends **button presses** (callback_query).\n3. From **@AvidMechanic**, open the bot and send `/start`. The bot answers \"activated\" and shows the **📋 لیست انتظار** button at the bottom of the chat.\n4. Every new request arrives with an Excel file and three buttons:\n   - **✍️ پاسخ به متقاضی**: the bot opens a reply box; what you write appears on the applicant's page within seconds (Reply to the request message still works too).\n   - **📞 درخواست شماره**: asks the applicant on their page to enter a mobile number; when they do, it arrives here.\n   - **✅ اتمام درخواست**: finishes the request, removes it from the waiting list, and the page shows \"تکمیل شد\". Replying again reopens it.\n5. **/list** (or the 📋 button) shows the waiting list: requests with no reply yet, then answered ones still open.\n\nOptional: in @BotFather → /setcommands add `list - لیست انتظار` and `help - راهنما`.\n\nPublic page: `…/webhook/newlife`\n",
+        "height": 560,
+        "width": 720,
+        "color": 6
+      },
+      "id": "ad3682ba-911b-4ebd-a175-0e084a5f8ff1",
+      "name": "Setup",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        -40,
+        -640
+      ]
+    },
+    {
+      "parameters": {
+        "content": "## Where to change things\n- **Serve Page** → top of the script: `EXPECTED_MIN` (reply time shown to the visitor), `PHONE`, and `SERVICES`: the three categories, each with `name`, a short tab label (`short`), its colour and its items.\n- **Serve Page** → top of the CSS: the sky background (`--sky-top`, `--sky-mid`, `--sky-low`), the navy text/buttons (`--navy`), and one colour per category (`--t-graft`, `--t-surg`, `--t-care`).\n- **Serve Page** → bottom of the page: the address, the phone link (`tel:`) and the two Google Maps buttons. For an exact pin, replace the text after `query=` and `destination=` with the clinic's `latitude,longitude`.\n- Only the first name and one service are required. When the mobile number is empty, the page shows a warning sheet asking for it (the visitor can still send without it), and the status screen keeps asking. Numbers added later go through *Phone (POST)* → *Save Phone* and reach Telegram.\n- **Handle Telegram Update** → `OPERATOR` (Telegram username that receives and answers requests) and `PHONE_ASK` (the text the applicant sees when you press 📞).\n- **Prepare Data** → how long requests are kept (72 h), duplicate window, spam limit.\n- Requests, replies and the waiting list live in this workflow's *static data*, so they work when the workflow is **published**, not in manual test runs.\n- The page asks for updates every few seconds, which creates many tiny executions. If the list gets noisy, set *Save successful production executions* to **Do not save** in the workflow settings.\n",
+        "height": 560,
+        "width": 760,
+        "color": 7
+      },
+      "id": "4453023c-4847-4e4e-9997-a8356f38e32d",
+      "name": "Where to change things",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        720,
+        -640
+      ]
+    }
+  ],
+  "connections": {
+    "Page (GET)": {
+      "main": [
+        [
+          {
+            "node": "Serve Page",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Submit (POST)": {
+      "main": [
+        [
+          {
+            "node": "Prepare Data",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Prepare Data": {
+      "main": [
+        [
+          {
+            "node": "New Lead?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "New Lead?": {
+      "main": [
+        [
+          {
+            "node": "Build Excel Row",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Respond Rejected",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Build Excel Row": {
+      "main": [
+        [
+          {
+            "node": "Make Excel File",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Make Excel File": {
+      "main": [
+        [
+          {
+            "node": "Send Lead to Telegram",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Respond Failed",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Send Lead to Telegram": {
+      "main": [
+        [
+          {
+            "node": "Save Message Id",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Respond Failed",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Save Message Id": {
+      "main": [
+        [
+          {
+            "node": "Respond OK",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Status (GET)": {
+      "main": [
+        [
+          {
+            "node": "Lookup Status",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Lookup Status": {
+      "main": [
+        [
+          {
+            "node": "Respond Status",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Phone (POST)": {
+      "main": [
+        [
+          {
+            "node": "Save Phone",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Save Phone": {
+      "main": [
+        [
+          {
+            "node": "Tell Operator?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Tell Operator?": {
+      "main": [
+        [
+          {
+            "node": "Phone to Telegram",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Respond Phone",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Phone to Telegram": {
+      "main": [
+        [
+          {
+            "node": "Respond Phone",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Telegram Trigger": {
+      "main": [
+        [
+          {
+            "node": "Handle Telegram Update",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Handle Telegram Update": {
+      "main": [
+        [
+          {
+            "node": "Route",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Route": {
+      "main": [
+        [
+          {
+            "node": "Telegram Reply",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Ask for Reply",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Show Menu",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Answer Button",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1"
+  }
+}
